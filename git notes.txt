@@ -1,0 +1,107 @@
+
+
+To get current version of git and verify that it's installed:
+git --version
+
+response to above command:
+git version 1.9.1
+
+set global user name:
+git config --global user.name "user_name"
+
+set user name only in current repository:
+git config user.name "user_name"
+
+set global email:
+git config --global user.email "user_name@gmail.com"
+
+set email only in current repository:
+git config user.email "user_name@gmail.com"
+
+set editor to emacs:
+git config --global core.editor emacs
+
+list current settings:
+git config --list
+
+________________________
+intialize current folder/directory as a git repository:
+git init
+
+link local repository to remote repository at Github:
+git remote add origin https://github.com/user_name/jhclass.git
+where "origin" is a ____ name and the URL is of the Github repository
+
+pull files from remote Github repository to local repository:
+git pull https://github.com/user_name/jhclass.git master
+where the URL is of the Github repository (same as above) and "master" is the name of the branch
+
+push files from local repository (after adding and committing changes) to remote Github repository:
+git push -u origin master
+where "origin" refers to the remote repository and "master" refers to the master branch (must modify if pushing to a branch other than the master)
+the '-u' attribute sets the branch where the push is happening, so that a subsequent 'pull' command remembers to pull from that branch
+
+________________________
+add new files:
+git add .
+
+update tracking for deleted files or files that changed names:
+git add -u
+
+add new files and update tracking for deleted files and files that changed names:
+git add -A
+
+
+________________________
+commit files with message describing changes:
+git commit -m "message describing changes"
+
+
+
+________________________
+view commit history:
+git log
+git log -p
+git log --pretty=oneline
+
+
+________________________
+exclude some files from git tracking:
+
+for project-wide, use .gitignore file
+
+for local, single-user-only , use .git/info/exclude file
+
+
+https://www.quora.com/What-is-the-syntax-to-ignore-a-entire-folder-in-a-gitignore-file
+
+If a filename or pattern in your .gitignore file happens to match the name of a directory, that directory and all of its contents will be ignored. If all you only want to ignore directories by that name, use
+
+name/
+
+To ignore anything, directory or file, at the top level of your working tree, use
+
+/name
+
+
+
+________________________
+to delete (remove all record of tracking) files that are now ignored but were previously tracked:
+
+https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
+
+
+
+.gitignore will prevent untracked files from being added (without an add -f) to the set of files tracked by git, however git will continue to track any files that are already being tracked.
+
+To stop tracking a file you need to remove it from the index. This can be achieved with this command.
+
+git rm --cached <file>
+
+The removal of the file from the head revision will happen on the next commit.
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+
+Get current working directory:
+pwd
+
+Change working directory:
+cd
+
+pathnames with spaces:  need to place backslash before space to escape space:
+to get this:
+/home/zh/project folder
+you have to enter this:
+/home/zh/project\ folder
+
+list permissions of a file 'myfile.ext':
+ls -l myfile.ext
+
+change permissions of a file to make it executable by anyone:
+chmod +x myfile.ext
+change permissions of a file to make it readable, writable, and executable by owner only:
+chmod 700 myfile.ext
+
+find ID number of a process:
+pidof
+for example:
+pidof nano
+
+to send termination signal (SIGTERM; default and safest way to kill process), where PID is the process ID number (all 3 commands below do same thing):
+kill PID
+kill -15 PID
+kill -SIGTERM PID
+
+to send termination signal to multiple processes:
+kill PID1 PID2 PID3
+
+to check amount of hard drive space:
+df -h
+
+to find a filename in the current directory (searches recursively):
+find . -type f -name 'filename.txt'
+

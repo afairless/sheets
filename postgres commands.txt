@@ -1,0 +1,93 @@
+to log into postgres from Linux command line (which will convert user prompt to 'postgres@user_name'):
+sudo -i -u postgres
+
+At Linux command prompt, to locate database (and other) default location:
+ps aux | grep postgres | grep -- -D
+
+
+At 'postgres@user_name' prompt, to create a database:
+createdb database_name
+createdb database_name -O user_who_owns_database_name
+
+At 'postgres@user_name' prompt, to create a user:
+createuser --interactive
+
+At 'postgres@user_name' prompt, to enter 'psql' tool:
+psql
+
+At 'postgres@user_name' prompt, to delete database:
+dropdb database_name
+
+At 'postgres@user_name' prompt, to exit:
+exit
+
+
+At 'database_name=# prompt' (in 'psql'), to show all databases:
+\l
+\list
+
+At 'database_name=# prompt' (in 'psql'), to show all tablespaces:
+\db
+
+At 'database_name=# prompt' (in 'psql'), to show all tables in the current database:
+\dt
+
+At 'database_name=# prompt' (in 'psql'), to show all tables in all schemas:
+\dt *.*
+
+At 'database_name=# prompt' (in 'psql'), to get current connection information:
+\conninfo
+
+At 'database_name=# prompt' (in 'psql'), to connect to a different database:
+\connect database_name
+
+At 'database_name=# prompt' (in 'psql'), to show (default) location of database:
+show data_directory;
+
+At 'database_name=# prompt' (in 'psql'), to delete database:
+DROP DATABASE database_name;
+
+At 'database_name=# prompt' (in 'psql'), to delete tablespace:
+DROP DATABASE tablespace_name;
+
+At 'database_name=# prompt' (in 'psql'), to select and show all entries in a table:
+SELECT * FROM table_name;
+
+
+At 'database_name=# prompt' (in 'psql'), to get help on commands:
+\?
+To escape help screen:
+q
+
+At 'database_name=# prompt' (in 'psql'), to exit/quit:
+\q
+
+
+At 'postgres=# prompt' (in 'psql'), to give user access to a database:
+grant all privileges on database database_name to user_name ;
+
+
+
+To create a new tablespace in which to store databases:
+1) at Linux command line, change owner of directory tablespace will be stored to the postgres user (named 'postgres' in this case) that will create the tablespace:
+sudo chown postgres:postgres directory_name
+2) At 'database_name=# prompt' (in 'psql'), create tablespace:
+CREATE TABLESPACE tablespace_name LOCATION '/home/zh/directory_name';
+
+At 'database_name=# prompt' (in 'psql'), to create a new database inside a specific tablespace:
+CREATE DATABASE database_name TABLESPACE tablespace_name;
+
+
+
+To import data from 'csv' file into database table:
+1) create a table with columns names and data types specified:
+create table zip_codes (ZIP char(5), LATITUDE double precision, LONGITUDE double precision, 
+CITY varchar, STATE char(2), COUNTY varchar, ZIP_CLASS varchar);
+2a) copy 'csv' data into created table without header:
+copy zip_codes from '/path/to/csv/ZIP_CODES.txt' DELIMITERS ',' CSV; 
+copy offset0 from '/home/zh/bbdb/0.csv' DELIMITERS ',' CSV;
+2b) copy 'csv' data into created table with header:
+copy offset0 from '/home/zh/bbdb/0.csv' WITH CSV HEADER DELIMITER AS ',';
+
+
+

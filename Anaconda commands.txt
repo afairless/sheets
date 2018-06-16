@@ -1,0 +1,54 @@
+to create environment in Anaconda default directory:
+conda create --name environmentname packagename
+
+to create environment in Anaconda defaulty directory with non-default version of Python:
+conda create --name environmentname python=3 packagename
+
+to create environment not in the Anaconda default directory:
+conda create -p ~/Documents/mydirectory python=3
+
+to activate environment not in Anaconda default directory:
+source activate ~/Documents/mydirectory
+
+to install package into currently active environment:
+conda install packagename
+
+to install package into environment other than currently activated environment:
+conda install --name environmentname packagename
+
+to list all Anaconda environments:
+conda info --envs
+
+to clone/copy an environment:
+conda create --name new_environment_name --clone existing_environment_name
+
+to delete an environment:
+conda remove --name environment --all
+
+to call 'conda' command by its full path name (assuming Anaconda installed in home directory):
+~/anaconda2/bin/conda
+~/anaconda3/bin/conda
+
+to display all version of Python that are available to install:
+conda search --full-name python
+
+to list all packages installed in the currently activated environment:
+conda list
+
+to save configuration of currently active environment to '.yml' file:
+conda env export > environment.yml
+
+to re-create environment from a '.yml' file:
+conda env create -f environment.yml
+
+to deactivate currently active environment:
+source deactivate
+
+to update Anaconda:
+conda upgrade anaconda
+conda upgrade conda
+
+to upgrade Anaconda to Python 3.6:
+conda install python=3.6
+    (this failed on my current machine, but can still create environments with 3.6 with:
+    (conda create --name new_environment_name python=3.6 package_names)
