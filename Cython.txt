@@ -1,0 +1,82 @@
+To compile Python code for Cython:
+1) copy Python program 'my_program.py' to 'my_program.pyx'
+
+2) create 'setup.py' with contents:
+
+------------------------------------
+from distutils.core import setup
+from distutils.extension import Extension
+from Cython.Distutils import build_ext
+
+setup(cmdclass = {'build_ext': build_ext},
+      ext_modules = [Extension('my_program_cythonized', ['my_program.pyx'])])
+------------------------------------
+
+Where 'my_program_cythonized' will be the stem of the filename of the shared library (C extension module)
+
+
+3) Run this command on the command line:
+python setup.py build_ext --inplace
+
+This creates a 'my_program.c' and a 'my_program_cython.cpython*.so' shared library file (where '*' represents wildcard characters)
+
+
+4) Start a Python interpreter
+5) In the Python interpreter, type:  'import my_program_cython', that is, the name of the shared library file up to but excluding the first period '.'
+6) In the Python interpreter, type:  'my_program_cython.main()' to run it (assuming your Python program is set up to run from its main function)
+
+
+
+To time a 'my_program.py' file as a whole, can use this command at command line:
+python -m timeit -s 'import my_program' 'my_program.main()'
+Assuming 'main()' is the top-level function in the module file 'my_program.py'
+
+To time the cythonized version, can substitute the stem name of the shared library
+python -m timeit -s 'import my_program_cythonized' 'my_program_cythonized.main()'
+
+
+
+
+To profile the Cython code at the function level using the 'cProfile' Python module:
+
+1) Add this to start of 'my_program.pyx' and compile it, as described above
+# cython: profile=True
+
+2) At the Python interpreter, type:
+import my_program_cythonized
+statement = 'my_program_cythonized.main()'
+import cProfile, pstats
+cProfile.runctx(statement, globals(), locals(), '.prof')
+s = pstats.Stats('.prof')
+s.strip_dirs().sort_stats('time').print_stats(30)
+s.strip_dirs().sort_stats(-1).print_stats()
+
+The last two lines are alternate versions that I found on different webpages; the exact line will vary, depending on your preferences
+
+
+
+
+
+
+
+
+
+
+
+
+*************************************
+To compile an executable Cython file, check explanation here:
+https://stackoverflow.com/questions/22507592/making-an-executable-in-cython#
+
+1) cython my_program.pyx --embed
+2) gcc <C_file_from_cython> -I<include_directory> -I<numpy_include_directory> -L<directory_containing_libpython> -l<name_of_libpython_without_lib_on_the_front> -o <output_file_name>
+
+The Python headers for the GCC C compiler command above can be found from the Python interpreter:
+from distutils.sysconfig import get_python_inc
+get_python_inc()
+
+The Numpy headers for the GCC C compiler command above can be found from the Python interpreter:
+numpy.get_include()
+
+PENDING STEP:  Need to find command to find shared library
+NOTE OF PURPOSE:  If can make an executable Cython file, may be able to use cProfile on it from command line, instead of method above from within Python interpreter

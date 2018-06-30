@@ -1,0 +1,33 @@
+To time a 'my_program.py' file as a whole, can use this command at command line:
+python -m timeit -s 'import my_program' 'my_program.main()'
+Assuming 'main()' is the top-level function in the module file 'my_program.py'
+
+
+
+To time each function in a Python module and save results to 'output.txt':
+python -m cProfile ptest.py > output.txt
+(official way to specify output file is to use '-o' switch, but this produces a machine-readable file, not human-readable)
+
+Each function within module will be listed under module name in 'filename' column
+    e.g., if module file named 'ptest.py', module functions are listed alphabetically under 'ptest.py'
+
+Results columns are:
+    ncalls is the number of calls made.
+    tottime is a total of the time spent in the given function.
+    percall refers to the quotient of tottime divided by ncalls
+    cumtime is the cumulative time spent in this and all subfunctions. It’s even accurate for recursive functions!
+    The second percall column is the quotient of cumtime divided by primitive calls
+    filename:lineno(function) provides the respective data of each function
+
+
+
+If line_profiler package is installed with Anaconda, can profile line-by-line at command line:
+kernprof -l -v ptest.py
+
+Before running command above, need to add '@profile' (without quotes) on line immediately above function(s) to be profiled
+
+'kernprof' saves machine-readable output to 'ptest.py.lprof' by default
+To save to a different file:
+kernprof -l -v ptest.py > output.txt
+(official way to specify output file is to use '-o' switch, but this produces a machine-readable file, not human-readable)
+kernprof -l -v -o output.txt ptest.py
