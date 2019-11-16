@@ -102,6 +102,37 @@ The removal of the file from the head revision will happen on the next commit.
 
 
 
+________________________
+reference URL:
+https://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+list tags:
+git tag
+
+create annotated tag:
+git tag -a v1.0 -m 'version 1.0'
+
+create annotated tag for a previously existing commit (where '9fb44c' are first few characters of the commit hash):
+git tag -a v1.0 9fb44c -m 'version 1.0'
+
+show specific commit and tag information by tag name:
+git show v1.0
+
+push specific tag to remote repo:
+git push origin v1.0
+
+push all tags to remote repo:
+git push origin --tags
 
 
+
+________________________
+reference URL:
+https://stackoverflow.com/questions/13685920/install-specific-git-commit-with-pip
+
+install Python package repo by tag from Github:
+pip install git+https://github.com/user_name/repo_name.git@tag_name
+
+install Python package repo by hash from Github:
+pip install git+https://github.com/user_name/repo_name.git@hash
 
