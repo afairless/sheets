@@ -151,3 +151,18 @@ To print number of characters in the latest saved version of the current file:
 :!wc -m %
 
 
+To open a terminal with a vertical split within Vim:
+:terminal ++curwin
+:term ++curwin
+
+
+To find files with fuzzy search with 'fzf' plugin:
+:Files
+
+
+To delete plug-ins from Vim-Plug pane (junegunn/vim-plug):
+:PlugClean
+
+
+
+

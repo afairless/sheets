@@ -41,8 +41,11 @@ conda env export > environment.yml
 to re-create environment from a '.yml' file:
 conda env create -f environment.yml
 
+to save cross-platform (e.g., Linux, Windows) configuration of currently active environment to '.yml' file:
+conda env export --from-history > environment.yml
+
 to deactivate currently active environment:
-source deactivate
+conda deactivate
 
 to update Anaconda:
 conda upgrade anaconda
@@ -52,3 +55,28 @@ to upgrade Anaconda to Python 3.6:
 conda install python=3.6
     (this failed on my current machine, but can still create environments with 3.6 with:
     (conda create --name new_environment_name python=3.6 package_names)
+    
+to show available channels:
+conda config --show channels
+
+to add 'conda-forge' as a channel:
+conda config --add channels conda-forge
+
+    
+    
+    
+    
+    
+https://towardsdatascience.com/conda-essential-concepts-and-tricks-e478ed53b5b
+
+TIP: always turn on the strict channel policy. It makes conda faster, and helps to avoid conflicts. You can do it with conda config --set channel_priority strict
+
+
+There are compatibility problems between conda-forge packages and packages contained in the default conda channels. Therefore, you should always set up channel_priority: strictas explained in the previous section and give priority to the conda-forge channel over the default channels when installing things or creating environments. There are two ways of doing that. Either you always specify conda install -c conda-forge or conda create -c conda-forge using always conda-forge as the first listed channel, OR, you create a .condarc file in your home with this content:
+
+channels:
+  - conda-forge
+  - defaults
+channel_priority: strict
+
+An environment should either use conda-forge or not, from creation to destruction. Do not mix and match. If you created it without using the conda-forge channel, then do not add it to the mix halfway. In practice, I always create an environment with conda-forge unless in very specific cases where I found incompatibilities.
