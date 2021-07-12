@@ -1,20 +1,33 @@
 
-set nocompatible
-filetype off
+" install vim-plug:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 
-" plugins/bundles installed by Vundle
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'klen/python-mode'
-Bundle 'davidhalter/jedi-vim'
+Plug 'preservim/nerdtree'
+Plug 'python-mode/python-mode'
+Plug 'davidhalter/jedi-vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/lightline.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jpalardy/vim-slime'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'tpope/vim-commentary'
+"Plug 'puremourning/vimspector'
 
-filetype plugin indent on
+call plug#end()
 
 
-" The rest of your config follows here
+" set text paste destination for 'vim-slime' plugin
+" documentation at:
+"   https://github.com/jpalardy/vim-slime
+let g:slime_target = "vimterminal"
+
+
+" Lets the 'F4' key toggle NerdTree on and off
+map <F4> :NERDTreeToggle<CR>
+
 
 " Toggles among showing absolute line numbers, relative line numbers, and none
 function! LineToggle()
@@ -28,16 +41,21 @@ function! LineToggle()
 endfunc
 nmap <F1> :call LineToggle()<cr>
 
+
+" Allows moving out of Vim terminal to other panes
+tmap <C-j> <C-W>j
+tmap <C-k> <C-W>k
+tmap <C-h> <C-W>h
+tmap <C-l> <C-W>l
+
+
 " Removes PyLint messages on left margin of code
-map <F2> :sign unplace *<cr> <cr>
+nmap <F2> :sign unplace *<cr> <cr>
 " Alternative:  this command permanently disables PyLint messages on left margin of code:
 " let g:pymode_lint_signs = 0
 
 " Removes PyLint messages on left margin of code
-map <F3> :only <cr>
-
-" Lets the 'F5' key toggle NerdTree on and off
-map <F5> :NERDTreeToggle<CR>
+nmap <F3> :only <cr>
 
 " Replaces tabs with spaces
 set tabstop=4
