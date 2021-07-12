@@ -153,6 +153,14 @@ git diff-tree --no-commit-id --name-only -r <commit hash>
 
 ________________________
 
+if connecting to repo via HTTPS, must have personal access token, which looks like this (this one has been revoked and can no longer be used):
+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
+
+for better security, connect to repo via SSH
+set a local repo to use SSH to push to remote repo (assumes SSH keys are already set locally):
+
+git remote set-url origin git@github.com:github_user_name/repo_name.git
+
 ________________________
 
 ________________________
