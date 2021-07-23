@@ -38,3 +38,39 @@ map('n', '<leader>rn', ':set relativenumber<cr>', options)
 
 require('nvim-autopairs').setup()
 require('lualine').setup{options = {theme = 'powerline'}}
+require'lspconfig'.pyright.setup{}
+
+require('compe').setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+    luasnip = true;
+  };
+}
+
+cmd([[highlight link CompeDocumentation NormalFloat]])
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+

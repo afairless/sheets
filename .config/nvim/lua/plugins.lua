@@ -6,4 +6,7 @@ return require('packer').startup(function()
   use 'windwp/nvim-autopairs'
   use 'glepnir/indent-guides.nvim'
   use 'hoob3rt/lualine.nvim'
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-compe'
+  use 'nvim-treesitter/nvim-treesitter'
 end)
