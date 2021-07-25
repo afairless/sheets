@@ -9,4 +9,6 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-compe'
   use 'nvim-treesitter/nvim-treesitter'
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
 end)

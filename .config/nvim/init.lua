@@ -16,7 +16,8 @@ o.showmode = false
 o.completeopt = [[menuone,noselect]]
 o.updatetime = 300
 o.hidden = true
-o.shiftwidth = 2
+o.tabstop = 4
+o.shiftwidth = 4
 wo.signcolumn = 'yes'
 wo.number = true
 wo.relativenumber = true
@@ -33,7 +34,7 @@ map('n', '<C-j>', '<C-W>j', options)
 map('n', '<C-k>', '<C-W>k', options)
 map('n', '<C-l>', '<C-W>l', options)
 map('n', '<leader>h', ':hide<cr>', options)
-map('n', '<leader>e', ':NvimTreeFindFile<cr>', options)
+map('n', '<leader>t', ':NvimTreeToggle<cr>', options)
 map('n', '<leader>rn', ':set relativenumber<cr>', options)
 
 require('nvim-autopairs').setup()
