@@ -27,8 +27,9 @@ g.mapleader = ' '
 g.floaterm_width = 0.8
 g.floaterm_height = 0.8
 g.nvim_tree_side = 'left'
-g.slime_target = 'tmux'
-cmd("let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{last}'}")
+g.slime_target = 'neovim'
+--g.slime_target = 'tmux'
+--cmd("let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{last}'}")
 
 local options = {noremap=true, silent=true}
 map('n', '<C-h>', '<C-W>h', options)
@@ -38,6 +39,9 @@ map('n', '<C-l>', '<C-W>l', options)
 map('n', '<leader>h', ':hide<cr>', options)
 map('n', '<leader>t', ':NvimTreeToggle<cr>', options)
 map('n', '<leader>rn', ':set relativenumber<cr>', options)
+map('n', '<leader>so', ':SymbolsOutline<cr>', options)
+map('n', '<leader>ft', ':FloatermToggle<cr>', options)
+map('t', '<Esc>', '<C-\\><C-n>', options) --in terminal, exits insert mode for normal mode
 
 vim.o.background = 'dark' -- or 'light'
 vim.cmd([[colorscheme gruvbox]])
