@@ -24,6 +24,8 @@ wo.relativenumber = true
 bo.swapfile = true
 
 g.mapleader = ' '
+g.floaterm_width = 0.8
+g.floaterm_height = 0.8
 g.nvim_tree_side = 'left'
 g.slime_target = 'tmux'
 cmd("let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{last}'}")
@@ -37,9 +39,14 @@ map('n', '<leader>h', ':hide<cr>', options)
 map('n', '<leader>t', ':NvimTreeToggle<cr>', options)
 map('n', '<leader>rn', ':set relativenumber<cr>', options)
 
+vim.o.background = 'dark' -- or 'light'
+vim.cmd([[colorscheme gruvbox]])
+
 require('nvim-autopairs').setup()
 require('lualine').setup{options = {theme = 'powerline'}}
 require'lspconfig'.pyright.setup{}
+require('lspkind').init()
+require'nvim-web-devicons'.setup()
 
 require('compe').setup {
   enabled = true;
@@ -73,5 +80,28 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true,  -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = 1000  -- Do not enable for files with more than 1000 lines, int
+  },
 }
 
+vim.g.symbols_outline = {
+    highlight_hovered_item = true,
+    show_guides = true,
+    auto_preview = true,
+    position = 'right',
+    show_numbers = false,
+    show_relative_numbers = false,
+    show_symbol_details = true,
+    keymaps = { 
+        close = {"<Esc>", "q"},
+        goto_location = "<Cr>",
+        focus_location = "o",
+        hover_symbol = "<C-space>",
+        rename_symbol = "r",
+        code_actions = "a",
+    },
+    lsp_blacklist = {},
+}
