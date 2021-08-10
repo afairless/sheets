@@ -24,8 +24,8 @@ wo.relativenumber = true
 bo.swapfile = true
 
 g.mapleader = ' '
-g.floaterm_width = 0.8
-g.floaterm_height = 0.8
+g.floaterm_width = 0.9
+g.floaterm_height = 0.9
 g.nvim_tree_side = 'left'
 g.slime_target = 'neovim'
 --g.slime_target = 'tmux'
@@ -36,15 +36,27 @@ map('n', '<C-h>', '<C-W>h', options)
 map('n', '<C-j>', '<C-W>j', options)
 map('n', '<C-k>', '<C-W>k', options)
 map('n', '<C-l>', '<C-W>l', options)
-map('n', '<leader>h', ':hide<cr>', options)
+--map('n', '<leader>h', ':hide<cr>', options)
+map('n', '<leader>h', '<cmd>hide<cr>', options)
 map('n', '<leader>t', ':NvimTreeToggle<cr>', options)
 map('n', '<leader>rn', ':set relativenumber<cr>', options)
-map('n', '<leader>so', ':SymbolsOutline<cr>', options)
-map('n', '<leader>ft', ':FloatermToggle<cr>', options)
+map('n', '<leader>so', '<cmd>SymbolsOutline<cr>', options)
+map('n', '<leader>ft', '<cmd>FloatermToggle<cr>', options)
+map("n", "<leader>tn", "<cmd>TestNearest<cr>", options)
+map("n", "<leader>tf", "<cmd>TestFile<cr>", options)
+map("n", "<leader>tl", "<cmd>TestLast<cr>", options)
+map("n", "<leader>tv", "<cmd>TestVisit<cr>", options)
+map("n", "<leader>ts", "<cmd>TestSuite<cr>", options)
 map('t', '<Esc>', '<C-\\><C-n>', options) --in terminal, exits insert mode for normal mode
 
 vim.o.background = 'dark' -- or 'light'
 vim.cmd([[colorscheme gruvbox]])
+
+cmd([[
+let test#python#runner = 'pytest'
+let test#python#pytest#executable = 'python -m pytest'
+let test#python#pytest#options = '-s'
+]])
 
 require('nvim-autopairs').setup()
 require('lualine').setup{options = {theme = 'powerline'}}
