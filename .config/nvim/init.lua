@@ -56,6 +56,7 @@ cmd([[
 let test#python#runner = 'pytest'
 let test#python#pytest#executable = 'python -m pytest'
 let test#python#pytest#options = '-s'
+let test#strategy = 'neovim'
 ]])
 
 require('nvim-autopairs').setup()
