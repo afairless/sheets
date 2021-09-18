@@ -2,6 +2,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind-nvim'
+  use 'kabouzeid/nvim-lspinstall'
   use 'nvim-treesitter/nvim-treesitter'
   use 'kyazdani42/nvim-tree.lua'
   use 'simrat39/symbols-outline.nvim'

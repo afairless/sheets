@@ -17,7 +17,8 @@ o.completeopt = [[menuone,noselect]]
 o.updatetime = 300
 o.hidden = true
 o.tabstop = 4
-o.shiftwidth = 4
+o.softtabstop = 0       --'0' matches value of 'tabstop'
+o.shiftwidth = 0        --'0' matches value of 'tabstop'
 wo.signcolumn = 'yes'
 wo.number = true
 wo.relativenumber = true
@@ -32,13 +33,17 @@ g.slime_target = 'neovim'
 --cmd("let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{last}'}")
 
 local options = {noremap=true, silent=true}
+--map('n', '<tab>', '<cmd>BufferLineCycleNext<CR>', options)
+--map('n', '<s-tab>', '<cmd>BufferLineCycleNext<CR>', options)
+--map('i', '<tab>', 'v:lua.tab_complete()', {expr=true})
+--map('i', '<s-tab>', 'v:lua.s_tab_complete()', {expr=true})
 map('n', '<C-h>', '<C-W>h', options)
 map('n', '<C-j>', '<C-W>j', options)
 map('n', '<C-k>', '<C-W>k', options)
 map('n', '<C-l>', '<C-W>l', options)
 --map('n', '<leader>h', ':hide<cr>', options)
 map('n', '<leader>h', '<cmd>hide<cr>', options)
-map('n', '<leader>t', ':NvimTreeToggle<cr>', options)
+map('n', '<leader>tr', ':NvimTreeToggle<cr>', options)
 map('n', '<leader>rn', ':set relativenumber<cr>', options)
 map('n', '<leader>so', '<cmd>SymbolsOutline<cr>', options)
 map('n', '<leader>ft', '<cmd>FloatermToggle<cr>', options)
