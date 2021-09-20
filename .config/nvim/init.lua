@@ -54,7 +54,9 @@ map("n", "<leader>tv", "<cmd>TestVisit<cr>", options)
 map("n", "<leader>ts", "<cmd>TestSuite<cr>", options)
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", options)
 map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", options)
+map('i', '<leader>jk', '<C-\\><C-n>', options) --exits insert mode for normal mode
 map('t', '<Esc>', '<C-\\><C-n>', options) --in terminal, exits insert mode for normal mode
+map('t', '<leader>jk', '<C-\\><C-n>', options) --in terminal, exits insert mode for normal mode
 
 vim.o.background = 'dark' -- or 'light'
 vim.cmd([[colorscheme gruvbox]])
