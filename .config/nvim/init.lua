@@ -32,6 +32,8 @@ g.slime_target = 'neovim'
 --g.slime_target = 'tmux'
 --cmd("let g:slime_default_config = {'socket_name': 'default', 'target_pane': '{last}'}")
 
+require('nvim-tree').setup()
+require('lspsaga').init_lsp_saga()
 local options = {noremap=true, silent=true}
 --map('n', '<tab>', '<cmd>BufferLineCycleNext<CR>', options)
 --map('n', '<s-tab>', '<cmd>BufferLineCycleNext<CR>', options)
@@ -43,20 +45,28 @@ map('n', '<C-k>', '<C-W>k', options)
 map('n', '<C-l>', '<C-W>l', options)
 --map('n', '<leader>h', ':hide<cr>', options)
 map('n', '<leader>h', '<cmd>hide<cr>', options)
-map('n', '<leader>tr', ':NvimTreeToggle<cr>', options)
+map('n', '<leader>tr', '<cmd>NvimTreeToggle<cr>', options)
 map('n', '<leader>rn', ':set relativenumber<cr>', options)
 map('n', '<leader>so', '<cmd>SymbolsOutline<cr>', options)
 map('n', '<leader>ft', '<cmd>FloatermToggle<cr>', options)
-map("n", "<leader>tn", "<cmd>TestNearest<cr>", options)
-map("n", "<leader>tf", "<cmd>TestFile<cr>", options)
-map("n", "<leader>tl", "<cmd>TestLast<cr>", options)
-map("n", "<leader>tv", "<cmd>TestVisit<cr>", options)
-map("n", "<leader>ts", "<cmd>TestSuite<cr>", options)
-map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", options)
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", options)
+map('n', "<leader>tn", "<cmd>TestNearest<cr>", options)
+map('n', "<leader>tf", "<cmd>TestFile<cr>", options)
+map('n', "<leader>tl", "<cmd>TestLast<cr>", options)
+map('n', "<leader>tv", "<cmd>TestVisit<cr>", options)
+map('n', "<leader>ts", "<cmd>TestSuite<cr>", options)
+map('n', "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", options)
+map('n', "gr", "<cmd>lua vim.lsp.buf.references()<cr>", options)
 map('i', '<leader>jk', '<C-\\><C-n>', options) --exits insert mode for normal mode
 map('t', '<Esc>', '<C-\\><C-n>', options) --in terminal, exits insert mode for normal mode
 map('t', '<leader>jk', '<C-\\><C-n>', options) --in terminal, exits insert mode for normal mode
+
+--lspsaga
+map('n', "<leader>dp", "<cmd>Lspsaga diagnostic_jump_prev<cr>", options)
+map('n', "<leader>dn", "<cmd>Lspsaga diagnostic_jump_next<cr>", options)
+map('n', "<leader>sf", "<cmd>luafile %<cr>", options)
+map('n', "<leader>gh", "<cmd>Lspsaga hover_doc<cr>", options)
+map('n', "<leader>rm", "<cmd>Lspsaga rename<cr>", options)
+
 
 vim.o.background = 'dark' -- or 'light'
 vim.cmd([[colorscheme gruvbox]])
