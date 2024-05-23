@@ -1,0 +1,178 @@
+
+tutorial/guide:
+https://doc.rust-lang.org/book/title-page.html
+https://doc.rust-lang.org/rust-by-example/index.html
+
+ 
+https://www.rust-lang.org/learn/get-started
+Install Rust at command line:
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+ 
+ 
+https://www.rust-lang.org/learn/get-started
+Update Rust at command line:
+rustup update
+ 
+ 
+https://www.rust-lang.org/learn/get-started
+start Rust "Hello World" project at command line:
+cargo new hello-rust
+
+
+https://www.rust-lang.org/learn/get-started
+execute '*.rs' file in current directory at command line:
+cargo run
+
+
+https://www.rust-lang.org/learn/get-started
+add crate to 'Cargo.toml' file in current directory at command line:
+cargo add crate-name@version-number
+cargo add ferris-says@0.2
+
+
+https://www.rust-lang.org/learn/get-started
+install crate added to 'Cargo.toml' in current directory at command line:
+cargo build
+
+
+https://pola-rs.github.io/polars-book/user-guide/installation/
+install opt-in feature of crate (feature "lazy" to crate "polars", in this case):
+
+cargo add polars -F lazy
+
+# Or Cargo.toml
+[dependencies]
+polars = { version = "x", features = ["lazy", ...]}
+
+
+
+check rust version:
+rustc --version
+
+
+list other available rust versions:
+rustup show
+
+
+set default version of rust:
+rustup default <version_number>
+
+
+run rust program not in current directory:
+https://stackoverflow.com/questions/54372941/running-a-rust-program-that-is-outside-of-the-current-directory
+cargo run --manifest-path ~/Desktop/src/myapp/Cargo.toml
+
+
+
+print data type of Rust variable:
+
+https://stackoverflow.com/questions/21747136/how-do-i-print-in-rust-the-type-of-a-variable
+How do I print in Rust the type of a variable?
+
+fn print_type_of<T>(_: &T) {
+    println!("{}", std::any::type_name::<T>())
+}
+
+print_type_of(&s); // &str
+print_type_of(&i); // i32
+print_type_of(&main); // playground::main
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################
+EVCXR
+##################################################
+
+https://depth-first.com/articles/2020/09/21/interactive-rust-in-a-repl-and-jupyter-notebook-with-evcxr/
+install EVCXR REPL at command line:
+cargo install evcxr_repl
+
+
+start EVCXR at command line:
+evcxr
+
+
+import a crate:
+:dep crate_name = "version_number"
+:dep chemcore = "0.2.1"
+:dep polars
+
+
+
+
+
+##################################################
+Polars
+##################################################
+
+https://docs.rs/polars/latest/polars/
+https://docs.rs/polars/latest/polars/prelude/struct.LazyFrame.html
+https://docs.rs/polars/latest/polars/prelude/fn.concat.html
+
+
+
+dataframe schema:
+df.schema()
+
+dataframe columns:
+df.get_columns()
+
+dataframe data types:
+df.dtypes()
+
+print dataframe data types:
+println!("{:?}", df.dtypes());
+
+dataframe fields:
+df.fields()
+
+print dataframe head:
+println!("{}", df.head(Some(5)));
+
+select dataframe columns by range of indices:
+df.select_by_range(2..8)
+
+print selected dataframe columns by range of indices:
+println!("{}", df.select_by_range(5..10).unwrap());
+
+
+dataframe formatting:
+https://stackoverflow.com/questions/70830241/rust-polars-how-to-show-all-columns
+
+    env::set_var("POLARS_FMT_TABLE_ROUNDED_CORNERS", "1"); // apply rounded corners to UTF8-styled tables.
+    //env::set_var("POLARS_FMT_MAX_COLS", "20"); // maximum number of columns shown when formatting DataFrames.
+    env::set_var("POLARS_FMT_MAX_ROWS", "10");   // maximum number of rows shown when formatting DataFrames.
+    env::set_var("POLARS_FMT_STR_LEN", "50");    // maximum number of characters printed per string value.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

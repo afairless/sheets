@@ -1,0 +1,6 @@
+
+
+restart:
+sudo service rabbitmq-server restart
+
+

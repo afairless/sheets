@@ -90,4 +90,36 @@ copy offset0 from '/home/zh/bbdb/0.csv' DELIMITERS ',' CSV;
 copy offset0 from '/home/zh/bbdb/0.csv' WITH CSV HEADER DELIMITER AS ',';
 
 
+----------------------------------------
+
+At 'database_name=# prompt' (in 'psql'), create test database:
+
+CREATE DATABASE database_name;
+CREATE USER username01 WITH ENCRYPTED PASSWORD 'user_password';
+GRANT ALL PRIVILEGES ON DATABASE database_name TO username01;
+
+CREATE TABLE test_table(col1 int, col2 text);
+INSERT INTO test_table (col1, col2) VALUES(17, 'meow');
+ALTER USER database_name PASSWORD 'database_name_admin';
+SELECT * FROM test_table;
+
+----------------------------------------
+
+changing postgresql port
+
+configuration file is at:
+/etc/postgresql/12/main/postgresql.conf
+where '12' is the postgresql version
+
+The parameter is listed at:
+port = 5432
+where '5432' is the default port
+
+
+
+
+
+
+
+
 

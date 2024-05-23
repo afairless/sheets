@@ -1,0 +1,61 @@
+
+https://docs.docker.com/engine/reference/builder/
+Dockerfile reference
+--"Do not confuse RUN with CMD. RUN actually runs a command and commits the result; CMD does not execute anything at build time, but specifies the intended command for the image."
+
+
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+--"Always combine RUN apt-get update with apt-get install in the same RUN statement."
+
+
+install Docker:
+https://docs.docker.com/engine/install/ubuntu/
+Install Docker Engine on Ubuntu
+
+
+
+list system-wide Docker information:
+docker info
+
+list docker images (includes docker_id, which is referenced by other commands):
+docker image ls
+
+list all docker image information in JSON-like style:
+docker image inspect docker_id (e.g., docker image inspect 72ab4137bd85)
+docker image inspect docker_name ("docker_name" is listed under "REPOSITORY" from command "docker image ls")
+
+list all docker containers:
+docker container ls
+
+show docker version:
+docker version
+
+show all running containers:
+docker ps
+
+show all containers, running or not:
+docker ps -a
+
+run interactive shell of ubuntu docker container:
+docker run -it ubuntu /bin/bash
+
+run interactive shell of ubuntu docker container and give it a name:
+docker run --name container_name -it ubuntu /bin/bash
+
+save Docker image to a tar archive:
+docker save -o archive_filename.tar image_filename
+
+load Docker image from a tar archive:
+docker load -i archive_filename.tar
+
+build image from Dockerfile in present working directory and give it a name and tag:
+docker build -t image_name:tag_name .
+
+delete container:
+docker rm container_id
+
+delete image:
+docker rmi image_id
+
+enter into running(?) container with bash terminal:
+docker exec -it container_id bash

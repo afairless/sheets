@@ -104,7 +104,7 @@ The removal of the file from the head revision will happen on the next commit.
 
 ________________________
 
-to clone repo from GitLab
+to clone repo from GitLab (via SSH)
 
 git clone git@gitlab.XXX_FILL_IN_HERE_XXX.git
 
@@ -154,7 +154,7 @@ git diff-tree --no-commit-id --name-only -r <commit hash>
 ________________________
 
 if connecting to repo via HTTPS, must have personal access token, which looks like this (this one has been revoked and can no longer be used):
-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
+ghp_lots_of_alphanumeric_characters_here
 
 for better security, connect to repo via SSH
 set a local repo to use SSH to push to remote repo (assumes SSH keys are already set locally):
@@ -163,8 +163,71 @@ git remote set-url origin git@github.com:github_user_name/repo_name.git
 
 ________________________
 
-________________________
+to test SSH connection to GitHub:
+ssh -T git@github.com
 
 ________________________
 
+forcibly add a file to git:
+git add file_path -f
+
 ________________________
+
+remove all added/modified (staged) files before committing them:
+git reset
+
+________________________
+
+create new branch from head:
+git branch new_branch_name
+
+create new branch from specified existing branch:
+git branch new_branch_name existing_branch_name
+
+________________________
+
+list files changed between commits:
+git diff --name-only first_commit_hash second_commit_hash
+
+list files changed in last 3 commits:
+git diff --name-only HEAD~3 HEAD
+
+________________________
+
+push a local-only branch to upstream, remote repository, deprecated syntax as of 2022-03:
+git push --set-upstream origin branch_name
+
+push a local-only branch to upstream, remote repository:
+git push -u origin branch_name
+git push --set-upstream-to=origin branch_name
+
+________________________
+
+pull dependencies with repo:
+git pull --recurse-submodules
+
+________________________
+show remote origin:
+git remote show origin
+
+________________________
+correct most recent commit message:
+git commit --amend -m 'new_message'
+
+________________________
+pretty git log:
+git log --graph --oneline --decorate
+
+
+________________________
+check out branch from remote repository:
+
+first, fetch information from repo:
+git fetch --all
+
+then, check out branch as usual:
+git checkout branch_name
+
+
+
+

@@ -1,0 +1,9 @@
+
+
+search all python files in current directory and subdirectories recursively except for subdirectory 'trades_ad_hocs' for the string 'raise', ignoring case (-i) and printing relative line number within file (-n)
+
+grep -inr --include \*.py --exclude-dir=trades_ad_hocs 'raise' .
+
+
+search all text files in the current directory for the word 'moon' while ignoring case:
+grep -i 'moon' *.txt

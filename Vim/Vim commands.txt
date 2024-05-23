@@ -151,6 +151,10 @@ To print number of characters in the latest saved version of the current file:
 :!wc -m %
 
 
+To count the number of occurrences of a particular string:
+:%s/string_pattern//gn
+
+
 To open a terminal with a vertical split within Vim:
 :terminal ++curwin
 :term ++curwin
@@ -164,5 +168,27 @@ To delete plug-ins from Vim-Plug pane (junegunn/vim-plug):
 :PlugClean
 
 
+To get Vim to work well with a Conda virtual environment, install it into the environment with:
+conda install -c conda-forge vim
 
+
+To refresh currently open document:
+:e
+:edit
+
+
+To save currently open document to a specific/different filename:
+:w filename.txt
+
+
+In Neovim's terminal, you start in normal mode, but can then switch to insert/terminal mode to type into the terminal; to switch back to normal mode, use:
+<Ctrl+\><Ctrl+n> (i.e., Control and backslash together, then Control and 'n' together)
+
+
+I haven't found a great way to refresh a buffer after files or file names have changed; two options:
+1) use edit command:
+:edit new_filename.file_extension
+:e new_filename.file_extension
+
+2) add line "set autoread" to .vimrc configuration file
 

@@ -1,0 +1,114 @@
+
+Command line:  list tmux session:
+tmux ls
+
+Command line:  attach to most recently created session:
+tmux a
+
+Command line:  attach to session by its number:
+tmux a -t #
+
+
+---------------------------------------------------
+
+Command line:  list all sessions:
+tmux list-sessions
+
+Command line:  kill all sessions:
+tmux kill-server
+
+Kill current session:
+Prefix + :kill-session
+
+
+---------------------------------------------------
+
+Prefix is Ctrl+b by default; remapped to Ctrl+A
+
+create new session:
+Prefix + :new
+
+create new window in current session:
+Prefix + c
+
+detach from session:
+Prefix + d
+
+open panel to move among sessions and windows:
+Prefix + w 
+Prefix + s
+
+move to next/prior session:
+Prefix + (
+Prefix + )
+
+move to next/prior window:
+Prefix + n
+Prefix + p
+
+move to next/prior pane:
+Prefix + {
+Prefix + }
+
+
+move between panes directionally:
+Prefix + arrow-key
+
+move to next pane:
+Prefix + o
+
+zoom/unzoom current pane:
+Prefix + z
+
+cycle through pane layouts:
+Prefix + Space
+
+resize panes:
+Prefix + Ctrl + (repeated) arrow keys
+
+
+Vertical split:
+Prefix + %
+
+Horizontal split:
+Prefix + "
+
+close current pane:
+Prefix + x
+
+View all keybindings (press 'q' to exit):
+Prefix + ?
+
+---------------------------------------------------
+
+enter copy-mode/buffer:
+Prefix + [
+
+start copy selection:
+Space
+
+end copy selection:
+Enter
+
+paste selection:
+Prefix + ]
+
+
+
+exit/cancel copy-mode/buffer:
+Ctrl + c
+q
+
+
+
+
+
+
+
+
+
+
+
+
+
+

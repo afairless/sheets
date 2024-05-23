@@ -1,0 +1,5 @@
+
+print directory tree with total sizes of files in each directory:
+tree --du -h
+tree --du -h --sort=size -r
+

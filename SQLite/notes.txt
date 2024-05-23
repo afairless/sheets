@@ -1,0 +1,24 @@
+
+At command line in directory where a SQLite database file is located, to get sqlite prompt:
+sqlite
+
+
+At sqlite prompt, print help:
+.help
+
+To exit/quit sqlite prompt:
+.quit
+
+At sqlite prompt, to open sqlite database:
+.open sqlite_filename
+
+At sqlite prompt, to get list of tables:
+.tables
+
+At sqlite prompt, to get table schema:
+.schema table_name
+
+
+
+
+

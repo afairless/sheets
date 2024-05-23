@@ -1,0 +1,73 @@
+
+Install poetry:
+curl -sSL https://install.python-poetry.org | python3 -
+
+Interactively define project dependencies and generate pyproject.toml file:
+poetry init
+
+Install dependencies from pyproject.toml file (this creates the 'poetry.lock' file):
+poetry install
+
+Information about currently activated virtual environment:
+poetry env info 
+
+Path to the virtual environment:
+poetry env info --path
+
+List all virtual environments associated with current project:
+poetry env list
+
+Create 'requirements.txt' file from Poetry 'toml' and 'lock' files:
+poetry export -f requirements.txt --output requirements.txt
+
+
+https://python-poetry.org/docs/basic-usage/
+To update to the latest versions, use the update command. This will fetch the latest matching versions (according to your pyproject.toml file) and update the lock file with the new versions. (This is equivalent to deleting the poetry.lock file and running install again.)
+
+
+
+
+
+
+
+
+
+
+
+https://python-poetry.org/docs/
+
+Install Poetry
+
+The installer script is available directly at install.python-poetry.org, and is developed in its own repository. The script can be executed directly (i.e. ‘curl python’) or downloaded and then executed from disk (e.g. in a CI environment).
+
+curl -sSL https://install.python-poetry.org | python3 -
+
+
+
+https://python.land/virtual-environments/python-poetry
+
+Install and remove packages with Python Poetry
+
+To add and install packages (your project dependencies), you can either edit the pyproject.toml file, or use the poetry add <package> command. I strongly suggest you use the poetry add command since it does more than simply edit the file. It instantly:
+
+    Looks for a suitable version that does not conflict with other dependencies
+    Installs the package in the accompanying virtual environment
+    Creates or updates a lock file called poetry.lock
+    
+    
+Using your project’s virtual environment
+
+Poetry created a virtual environment for us as well. We’ll now learn how we can use this virtual environment.
+Running your script
+
+You can run a script in your project’s virtual environment by using the poetry run command. If you created a file called main.py, for example, you can run it with:
+
+poetry run python main.py
+
+In the same way, you can also run commands that got installed in your virtual environment. E.g., to run pytest, which is installed as a developer dependency, you can use poetry run pytest.
+Activating the virtual environment
+
+You can use the poetry shell command if you want to use the virtual environment interactively. This command will activate the virtual environment in a newly launched shell. Once in there, you don’t need to use poetry run to run your scripts. You can use the virtual environment like you would with any other virtual environment.
+
+
+

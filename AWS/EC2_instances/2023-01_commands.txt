@@ -1,0 +1,47 @@
+ 
+You can set up the EC2 instance to accept any combination of SSH, HTTP, and HTTPS connections.  For my current one, I set it to accept only SSH, which means I can't use the AWS Console to connect to it.
+
+Generating the SSH key pair involves downloading the private keys to the local computer in a *.pem file.
+
+AWS provides a helpful "connect to your EC2 instance" page:
+
+    AWS recommends limiting access to the private key:
+    chmod 400 dirichlet_ec2.pem
+
+    You can connect to the instance using SSH, e.g.:
+    ssh -i "dirichlet_ec2.pem" ubuntu@ec2-54-166-98-39.compute-1.amazonaws.com
+    
+
+The EC2 instance might refuse HTTP and HTTPS connections, but it can still initiate them by default (assuming outbound rules allow this).  You can check your public IP address (and web connection) with, for example:
+
+curl icanhazip.com
+OR
+curl ident.me
+OR
+wget -q -O - ident.me
+OR
+curl https://ipv4.lafibre.info/ip.php
+
+
+From the local computer, one can transfer files to the EC2 VM with SCP.  For example, we can upload 'meow.txt':
+
+scp -i dirichlet_ec2.pem meow.txt ubuntu@54.166.98.39:/home/ubuntu
+
+Or we can upload an entire directory with SCP:
+scp -i /home/gv/Documents/aws_dirichlet/dirichlet_ec2.pem -r ~/.config/nvim ubuntu@54.221.18.118:/home/ubuntu/.config/nvim
+
+
+When starting with the EC2 (Ubuntu) VM, it's a good idea to update it:
+
+sudo apt-get update
+sudo apt-get upgrade
+
+
+The first thing you should do to secure your server is to update the local repositories
+and upgrade the operating system and installed applications by applying the latest
+patches.
+On Ubuntu and Debian:
+$ sudo apt update && sudo apt upgrade -y
+
+
+

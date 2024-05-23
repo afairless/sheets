@@ -1,0 +1,55 @@
+
+handy URLs:
+
+https://wiki.archlinux.org/title/Ranger
+
+
+
+
+To set up:
+
+1) install
+2) open ranger in terminal by typing 'ranger' to initialize configuration directory
+3) close ranger
+4) type 'ranger --copy-config=all' to get standard configuration files
+5) to get image previews, install 'w3m' (which is the default, but other image previewers are available)
+6) in configuration file '~/.config/ranger/rc.conf', set 'set preview_images true'
+7) in configuration file '~/.config/ranger/rc.conf', set 'set colorscheme snow'
+
+
+To toggle showing and not showing hidden files, type Ctrl+h
+
+
+To open a shell in ranger's current directory, type Shift+S (this keeps ranger open "underneath", so that typing "exit" in the shell returns to ranger)
+
+
+To automatically exit ranger into a shell in ranger's current directory, there are several solutions and the best ones involve modifying the shell's configuration:
+
+https://unix.stackexchange.com/questions/342064/ranger-cd-into-a-folder-and-invoke-shell
+Ranger cd into a folder (and invoke shell)?
+
+https://superuser.com/questions/1043806/how-to-exit-the-ranger-file-explorer-back-to-command-prompt-but-keep-the-current
+How to exit the Ranger file explorer back to command prompt but keep the current directory?
+
+
+open a new tab for browsing:
+Ctrl+n
+
+switch between tabs:
+Tab
+
+to create a directory:
+:mkdir directory_name
+
+to create a file:
+:touch file_name
+
+to rename the currently selected file:
+:rename new_file_name
+
+to select multiple files/directories for bulk operations, highlight each one and hit Space (which indents its name)
+
+
+
+
+

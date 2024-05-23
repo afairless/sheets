@@ -62,7 +62,11 @@ conda config --show channels
 to add 'conda-forge' as a channel:
 conda config --add channels conda-forge
 
-    
+
+To get Vim to work well with a Conda virtual environment, install it into the environment with:
+conda install -c conda-forge vim
+
+
     
     
     
