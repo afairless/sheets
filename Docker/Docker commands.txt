@@ -12,6 +12,8 @@ install Docker:
 https://docs.docker.com/engine/install/ubuntu/
 Install Docker Engine on Ubuntu
 
+auto-install script for Ubuntu (can also install through apt or with .deb package):
+curl -fsSL https://get.docker.com -o get-docker.sh
 
 
 list system-wide Docker information:
