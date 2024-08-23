@@ -1,0 +1,99 @@
+
+https://pixi.sh/latest/reference/cli/
+https://pixi.sh/latest/basic_usage/
+https://pixi.sh/latest/tutorials/python/
+https://prefix.dev/blog/pixi_a_fast_conda_alternative
+
+
+https://pixi.sh/latest/switching_from/conda/
+With pixi you can import environment.yml files into a pixi project. (See import)
+pixi init --import environment.yml
+
+
+
+
+Install pixi:
+curl -fsSL https://pixi.sh/install.sh | bash
+
+
+List packages in lock file:
+pixi list
+
+List packages in environment named 'prod1':
+pixi list -e prod1
+
+List packages in a dependency tree:
+pixi tree
+
+Initialize project (includes making project directory):
+pixi init project_name
+
+Add packages to project:
+pixi add python numpy scipy matplotlib
+
+Run python code within pixi environment:
+pixi run python src/program.py
+
+Make running a python program a task, then run the task
+(created tasks are listed in pixi.toml):
+pixi task add run_program python src/program.py
+pixi run run_program
+
+Activate Pixi shell with virtual environment:
+pixi shell
+
+List details of a package under search criteria:
+pixi search package_name_or_search_criteria
+pixi search numpy
+pixi search sci*
+
+Information:
+pixi info
+
+
+Global commands:
+pixi global install package_name
+pixi global list
+pixi global upgrade
+pixi global upgrade-all
+pixi global remove
+
+
+Add tasks examples:
+pixi task add step01 "python s01.py" --cwd src --clean-env
+pixi task add step02 "python s02.py" --cwd src --clean-env --depends-on step01
+
+
+
+-------------------------------------------------
+If the Pixi project requires a higher Linux kernel, attempting to run the code may produce an error like:
+The current system has a mismatching virtual package. The project requires '__linux' to be at least version
+  │ '5.10' but the system has version '5.4.0'
+
+In such case, verify current Linux kernel version with:
+uname -srm
+
+And add this (with correct kernel version) to pixi.toml:
+[system-requirements]
+linux = "5.4.0"
+
+
+-------------------------------------------------
+https://pixi.sh/latest/reference/pixi_configuration/
+
+By default, Pixi stores the environment in the project folder.  To store environments separately, set the 'detached-parameters' parameter in the configuration file to 'true' or to the path where environments should be stored.
+
+The configuration file can be stored in the home directory:
+~/.pixi/config.toml
+
+Inside config.toml:
+detached-environments = true
+
+
+
+
+
+
+
+
+
