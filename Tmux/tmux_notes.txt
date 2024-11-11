@@ -79,6 +79,10 @@ Prefix + x
 View all keybindings (press 'q' to exit):
 Prefix + ?
 
+View pane numerical identifiers:
+Prefix + q
+
+
 ---------------------------------------------------
 
 enter copy-mode/buffer:
