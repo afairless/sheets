@@ -1,0 +1,26 @@
+
+Create virtual environment
+uv venv
+
+Many uv commands are calls to pip
+
+Install packages
+uv pip install package_name
+
+List installed packages
+uv pip list
+
+Run tools
+uv tool run pycowsay meow
+uvx pycowsay moo
+
+Run Python module
+uv run module.py
+
+Sync with environment specification files
+uv pip sync requirements.txt
+uv pip sync pyproject.toml
+
+Remove package
+uv remove package_name
+
