@@ -1,0 +1,12 @@
+
+Convert markdown to PDF:
+pandoc document.md -o document.pdf
+
+
+Convert markdown to PDF while maintaining order of figures and text across pages:
+pandoc document.md -f markdown-implicit_figures -o document.pdf
+
+reference:
+https://stackoverflow.com/questions/60000244/pandoc-md-to-pdf-keep-order-when-inserting-image-before-pagebreak
+
+
