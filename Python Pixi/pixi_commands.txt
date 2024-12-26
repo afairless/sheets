@@ -31,6 +31,9 @@ pixi init project_name
 Add packages to project:
 pixi add python numpy scipy matplotlib
 
+Add packages to development environment named 'dev' of project:
+pixi add --feature dev pytest hypothesis
+
 Run python code within pixi environment:
 pixi run python src/program.py
 
@@ -41,6 +44,9 @@ pixi run run_program
 
 Activate Pixi shell with virtual environment:
 pixi shell
+
+To exit Pixi shell:
+exit
 
 List details of a package under search criteria:
 pixi search package_name_or_search_criteria
