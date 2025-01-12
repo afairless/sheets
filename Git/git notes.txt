@@ -128,6 +128,15 @@ list all git branches:
 git branch -a -v
 
 
+________________________
+
+get remote branch and use it locally:
+git fetch origin branch_name
+git switch branch_name
+
+("git switch" creates a local branch where one can use the fetched remote branch)
+(not "git pull", b/c it merges branch with current local branch)
+
 
 ________________________
 
@@ -154,7 +163,7 @@ git diff-tree --no-commit-id --name-only -r <commit hash>
 ________________________
 
 if connecting to repo via HTTPS, must have personal access token, which looks like this (this one has been revoked and can no longer be used):
-ghp_lots_of_alphanumeric_characters_here
+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
 
 for better security, connect to repo via SSH
 set a local repo to use SSH to push to remote repo (assumes SSH keys are already set locally):
@@ -227,6 +236,31 @@ git fetch --all
 
 then, check out branch as usual:
 git checkout branch_name
+
+________________________
+move HEAD to prior commit then back to most recent commit:
+
+git checkout COMMIT_HASH
+
+then:
+git checkout BRANCH_NAME
+
+if working on the master branch, then:
+git checkout master
+
+________________________
+to remove files/directories from git history:
+use git-filter-repo tool:
+https://github.com/newren/git-filter-repo/
+
+Briefly, after copying the 'git-filter-repo' file into the project directory, can analyze git history with:
+python3 git-filter-repo --analyze
+This creates a directory .git/filter-repo/analysis that summarizes the git history
+
+To remove directory 'input' from the git history:
+python3 git-filter-repo --path input/ --invert-paths --force
+The 'force' flag is required only if this is not a newly cloned repo
+
 
 
 
