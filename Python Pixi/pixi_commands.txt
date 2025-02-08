@@ -15,6 +15,9 @@ pixi init --import environment.yml
 Install pixi:
 curl -fsSL https://pixi.sh/install.sh | bash
 
+Upgrade pixi:
+pixi self-update
+
 
 List packages in lock file:
 pixi list
