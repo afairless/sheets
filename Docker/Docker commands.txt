@@ -44,6 +44,9 @@ docker run -it ubuntu /bin/bash
 run interactive shell of ubuntu docker container and give it a name:
 docker run --name container_name -it ubuntu /bin/bash
 
+stop a running container (from outside the container):
+docker stop container_id
+
 save Docker image to a tar archive:
 docker save -o archive_filename.tar image_filename
 
@@ -59,5 +62,18 @@ docker rm container_id
 delete image:
 docker rmi image_id
 
+delete "dangling" images, i.e., images with no tag and no dependent container:
+docker image prune
+
+delete "dangling" images and images with a tag but no dependent container:
+docker image prune -a
+
+
+
 enter into running(?) container with bash terminal:
 docker exec -it container_id bash
+
+
+
+
+
