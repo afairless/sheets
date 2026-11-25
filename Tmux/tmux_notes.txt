@@ -8,8 +8,17 @@ tmux a
 Command line:  attach to session by its number:
 tmux a -t #
 
+Command line:  specify configuration file, if it's not initialized automatically:
+tmux source-file ~/.tmux.conf
+
 
 ---------------------------------------------------
+
+Command line:  start new session, attach it if it exists, and name it "session_name"
+tmux new-session -A -s session_name
+
+Command line:  start new session, run command, and keep session open:
+tmux new-session "ls: bash"
 
 Command line:  list all sessions:
 tmux list-sessions
@@ -104,7 +113,10 @@ Ctrl + c
 q
 
 
+---------------------------------------------------
 
+Open existing session read-only in current pane (where `TMUX=` unsets the tmux environment variable to allow nested sessions and `0` is the session name, which defaults to numbers if a name hasn't been explicitly set):
+TMUX= tmux attach-session -t 0 -r
 
 
 
